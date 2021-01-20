@@ -41,6 +41,10 @@ public class instantiationDB implements CommandLineRunner{
 		Posts p2 = new Posts(null, sdf.parse("20/01/2021"), "Bom dia", "Acordei feliz!", new AuthorDTO(user1));
 		
 		postRepository.saveAll(Arrays.asList(p1, p2));
+		
+		user1.getPosts().addAll(Arrays.asList(p1, p2));
+		
+		userRepository.save(user1);
 	}
 	
 }

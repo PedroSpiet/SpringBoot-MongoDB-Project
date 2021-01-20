@@ -35,4 +35,12 @@ public class UserService {
 		repository.deleteById(id);
 		return "Deletado com Sucesso!";
 	}
+	
+	public User updateUser(User updatedUser) {
+		User user = findOne(updatedUser.getId());
+		user.setEmail(updatedUser.getEmail());
+		user.setName(updatedUser.getName());
+		repository.save(user);
+		return user;
+	}
 }

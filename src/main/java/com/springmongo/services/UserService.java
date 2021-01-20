@@ -25,4 +25,14 @@ public class UserService {
 		Optional<User> user = repository.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("User not found"));
 	}
+	
+	public User createUser(User user) {
+		return repository.insert(user);
+	}
+	
+	public String deleteUser(String id) {
+		findOne(id);
+		repository.deleteById(id);
+		return "Deletado com Sucesso!";
+	}
 }
